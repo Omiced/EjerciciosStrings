@@ -1,36 +1,17 @@
-const repeated = function (str) {
-  const strN = str.toLowerCase();
-  let repetida = "";
-  let numRep = 0;
-  for (let i = 0; i < strN.length; i++) {
-    for (let j = i + 1; j < strN.length; j++) {
-      if (strN.charAt(i) == strN.charAt(j)) {
-        repetida = strN.charAt(i);
-        numRep++;
-      }
-    }
+const btnEnviarEl = document.querySelector("#btn-enviar");
+const exampleFormControlInput1 = document.getElementById(
+  "exampleFormControlInput1"
+);
+const exampleFormControlTextarea1 = document.getElementById(
+  "exampleFormControlTextarea1"
+);
+const alertError = document.getElementById("alert");
+btnEnviarEl.addEventListener("click", (e) => {
+  e.preventDefault();
+  alertError.style.display = "none";
+  if (exampleFormControlTextarea1.value.replaceAll("  ", "").length < 20) {
+    alertError.style.display = "block";
+    alertError.textContent = "PErro";
+    exampleFormControlTextarea1.focus();
   }
-  return { repetida, numRep };
-};
-
-console.log(repeated("Abraham"));
-
-const reverseString = function (str) {
-  let reversed = "";
-  for (let i = str.length - 1; i >= 0; i--) {
-    reversed += str[i];
-  }
-
-  return reversed;
-};
-console.log(reverseString("Cano"));
-
-const esPalindromo = function (str) {
-  const strN = str.toLowerCase().replace(/ /g, "");
-  return strN == reverseString(strN) ? "Es Palindromo" : "No es";
-};
-
-console.log(esPalindromo("Anita lava la tina"));
-console.log(esPalindromo("Perro"));
-console.log(esPalindromo("Reconocer"));
-console.log(esPalindromo("Josue"));
+});
