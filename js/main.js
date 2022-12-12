@@ -24,3 +24,13 @@ const reverseString = function (str) {
   return reversed;
 };
 console.log(reverseString("Cano"));
+
+const esPalindromo = function (str) {
+  const strN = str.toLowerCase().replace(/ /g, "");
+  return strN == reverseString(strN) ? "Es Palindromo" : "No es";
+};
+
+console.log(esPalindromo("Anita lava la tina"));
+console.log(esPalindromo("Perro"));
+console.log(esPalindromo("Reconocer"));
+console.log(esPalindromo("Josue"));
