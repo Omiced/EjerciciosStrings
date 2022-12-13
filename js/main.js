@@ -26,10 +26,18 @@ const rfcInputEl = document.getElementById("rfc-input");
 btnEnviarEl.addEventListener("click", (e) => {
   e.preventDefault();
   alertError.style.display = "none";
+  let valido = 0;
   let RFCRegex = /^[A-Z]{4}[0-9]{6}[A-Z0-9]{3}$/;
   if (rfcInputEl.value.match(RFCRegex) == null) {
     alertError.style.display = "block";
     alertError.innerHTML += "El RFC no es válido";
+    rfcInputEl.style.border = "2px solid red";
     exampleFormControlTextarea1.focus();
+  } else {
+    rfcInputEl.style.border = "2px solid green";
+    valido++;
+  }
+  if (valido > 0) {
+    setTimeout(() => (rfcInputEl.style.border = ""), 3000);
   }
 });
