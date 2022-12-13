@@ -7,6 +7,7 @@ const exampleFormControlTextarea1 = document.getElementById(
 );
 const alertError = document.getElementById("alert");
 const rfcInputEl = document.getElementById("rfc-input");
+let idTimeout;
 // btnEnviarEl.addEventListener("click", (e) => {
 //   e.preventDefault();
 //   alertError.style.display = "none";
@@ -37,7 +38,8 @@ btnEnviarEl.addEventListener("click", (e) => {
     rfcInputEl.style.border = "2px solid green";
     valido++;
   }
+  if (!idTimeout) clearTimeout(idTimeout);
   if (valido > 0) {
-    setTimeout(() => (rfcInputEl.style.border = ""), 3000);
+    idTimeout = setTimeout(() => (rfcInputEl.style.border = ""), 3000);
   }
 });
